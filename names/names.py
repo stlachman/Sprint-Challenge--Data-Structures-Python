@@ -208,14 +208,23 @@ f.close()
 f = open('names_2.txt', 'r')
 names_2 = f.read().split("\n")  # List containing 10000 names
 f.close()
+
+# duplicates = []
+# runtime O(n^2)
+# for name_1 in names_1:
+#   for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
+
 duplicates = []
 
 # initialize binary search tree with first value
-tree = BinarySearchTree(names_1[0])
+bst = BinarySearchTree(names_1[0])
+# time complexity: O(n log n)
 for name_1 in names_1[1:]:
-    tree.insert(name_1)
+    bst.insert(name_1)
 for name_2 in names_2:
-    if tree.contains(name_2):
+    if bst.contains(name_2):
         duplicates.append(name_2)
 
 
